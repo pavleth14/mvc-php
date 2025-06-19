@@ -1,0 +1,8 @@
+RewriteEngine On
+RewriteBase /programming_with_gio/060_mvc/
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^ index.php [QSA,L]
+
+
+
