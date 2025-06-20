@@ -1,5 +1,5 @@
 RewriteEngine On
-RewriteBase /programming_with_gio/060_mvc/
+RewriteBase /programming_with_gio/061_http_headers/
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
 RewriteRule ^ index.php [QSA,L]

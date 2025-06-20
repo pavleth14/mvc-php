@@ -2,7 +2,7 @@
 
     declare(strict_types=1);
 
-    namespace App;    
+    namespace App; 
 
     class View {
         
@@ -23,6 +23,11 @@
                 throw new ViewNotFoundException();
             }
 
+            // foreach($this->params as $key => $value) {
+            //     $$key = $value;
+            // }
+            extract($this->params);
+
             ob_start();
 
             include $viewPath;
@@ -35,6 +40,11 @@
         public function __toString()
         {
             return $this->render();
+        }
+
+        public function __get(string $name)
+        {
+            return $this->params[$name] ?? null;
         }
     }
 

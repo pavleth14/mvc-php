@@ -7,7 +7,7 @@ class Router {
     private array $routes = [];
 
     // Ovo dodaš da znaš u kom je folderu aplikacija
-    private string $basePath = '/programming_with_gio/060_mvc';
+    private string $basePath = '/programming_with_gio/061_http_headers';
 
     public function register(string $requestMethod, string $route, callable | array $action): self {
         $this->routes[$requestMethod][$route] = $action;
@@ -45,7 +45,7 @@ class Router {
         $action = $this->routes[$requestMethod][$route] ?? null;        
 
         if (!$action) {
-            throw new RouteNotFoundException();
+            throw new \App\RouteNotFoundException();
         }
 
 
@@ -68,7 +68,7 @@ class Router {
             }
         }
 
-        throw new RouteNotFoundException();
+        throw new \App\RouteNotFoundException();
 
     }
 }
