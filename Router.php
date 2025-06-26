@@ -7,7 +7,7 @@ class Router {
     private array $routes = [];
 
     // Ovo dodaš da znaš u kom je folderu aplikacija
-    private string $basePath = '/programming_with_gio/061_http_headers';
+    private string $basePath = '/programming_with_gio/062_pdo_2';
 
     public function register(string $requestMethod, string $route, callable | array $action): self {
         $this->routes[$requestMethod][$route] = $action;

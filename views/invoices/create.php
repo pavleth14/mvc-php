@@ -8,7 +8,7 @@
 </head>
 
 <body>
-    <form action="/programming_with_gio/061_http_headers/invoices/create" method="post">
+    <form action="/programming_with_gio/062_pdo_2/invoices/create" method="post">
         <label>
             Amount
         </label>
