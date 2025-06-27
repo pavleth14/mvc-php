@@ -14,9 +14,14 @@ class HomeController
 {
     // view, umesto ovoga ide react recimo
     public function index(): View
-    {
+    {        
         try {
-            $db = new PDO('mysql:host=127.0.0.1; dbname=my_db', 'root', '');
+            $db = new PDO(
+                'mysql:host=' . $_ENV['DB_HOST'] . 
+                ';dbname=' . $_ENV['DB_DATABASE'],
+                $_ENV['DB_USER'],
+                $_ENV['DB_PASS']                
+            );
         } catch (PDOException $e) {
             throw new \PDOException($e->getMessage(), (int)$e->getCode());
         }
@@ -41,16 +46,19 @@ class HomeController
 
 
             $newUserStmt->execute([$email, $name]);
-
-            $userId = $db->lastInsertId();
-
+            
+            $userId = (int) $db->lastInsertId();            
+            
             $newInvoiceStmt->execute([$amount, $userId]);
 
             $db->commit();
+            
         } catch (\Throwable $e) {
             if($db->inTransaction()) {
                 $db->rollBack();
             }
+
+            throw $e;
         }
 
         $fetchStmt = $db->prepare(
